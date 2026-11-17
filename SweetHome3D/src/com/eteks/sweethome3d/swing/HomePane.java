@@ -383,6 +383,8 @@ public class HomePane extends JRootPane implements HomeView {
         furnitureController, "toggleFurnitureSort", HomePieceOfFurniture.SortableProperty.VALUE_ADDED_TAX);
     createAction(ActionType.SORT_HOME_FURNITURE_BY_PRICE_VALUE_ADDED_TAX_INCLUDED, preferences, 
         furnitureController, "toggleFurnitureSort", HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED);
+    createAction(ActionType.SORT_HOME_FURNITURE_BY_VOLUME, preferences,
+            furnitureController, "toggleFurnitureSort", HomePieceOfFurniture.SortableProperty.VOLUME);
     createAction(ActionType.SORT_HOME_FURNITURE_BY_DESCENDING_ORDER, preferences, 
         furnitureController, "toggleFurnitureSortOrder");
     createAction(ActionType.DISPLAY_HOME_FURNITURE_CATALOG_ID, preferences, 
@@ -423,6 +425,8 @@ public class HomePane extends JRootPane implements HomeView {
         furnitureController, "toggleFurnitureVisibleProperty", HomePieceOfFurniture.SortableProperty.VALUE_ADDED_TAX);
     createAction(ActionType.DISPLAY_HOME_FURNITURE_PRICE_VALUE_ADDED_TAX_INCLUDED, preferences, 
         furnitureController, "toggleFurnitureVisibleProperty", HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED);
+    createAction(ActionType.DISPLAY_HOME_FURNITURE_VOLUME, preferences,
+        furnitureController, "toggleFurnitureVisibleProperty", HomePieceOfFurniture.SortableProperty.VOLUME);
     createAction(ActionType.EXPORT_TO_CSV, preferences, controller, "exportToCSV");
     
     PlanController planController = controller.getPlanController();
@@ -1316,6 +1320,7 @@ public class HomePane extends JRootPane implements HomeView {
       addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_CATALOG_ID, 
           sortActions, HomePieceOfFurniture.SortableProperty.CATALOG_ID); 
     }
+
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_NAME, 
         sortActions, HomePieceOfFurniture.SortableProperty.NAME); 
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_WIDTH, 
@@ -1324,6 +1329,8 @@ public class HomePane extends JRootPane implements HomeView {
         sortActions, HomePieceOfFurniture.SortableProperty.DEPTH);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_HEIGHT, 
         sortActions, HomePieceOfFurniture.SortableProperty.HEIGHT);
+    addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_VOLUME,
+        sortActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_X, 
         sortActions, HomePieceOfFurniture.SortableProperty.X);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_Y, 
@@ -1354,6 +1361,7 @@ public class HomePane extends JRootPane implements HomeView {
           sortActions, HomePieceOfFurniture.SortableProperty.VALUE_ADDED_TAX);
       addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_PRICE_VALUE_ADDED_TAX_INCLUDED, 
           sortActions, HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED);
+
     }
     // Add radio button menu items to sub menu and make them share the same radio button group
     ButtonGroup sortButtonGroup = new ButtonGroup();
@@ -1447,6 +1455,8 @@ public class HomePane extends JRootPane implements HomeView {
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.DOOR_OR_WINDOW);
     addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_VISIBLE, 
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.VISIBLE);
+    addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_VOLUME,
+        displayPropertyActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     // Use prices if currency isn't null
     if (preferences.getCurrency() != null) {
       addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_PRICE, 
@@ -1457,6 +1467,7 @@ public class HomePane extends JRootPane implements HomeView {
           displayPropertyActions, HomePieceOfFurniture.SortableProperty.VALUE_ADDED_TAX);
       addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_PRICE_VALUE_ADDED_TAX_INCLUDED, 
           displayPropertyActions, HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED);
+
     }
     // Add radio button menu items to sub menu 
     for (Map.Entry<HomePieceOfFurniture.SortableProperty, Action> entry : displayPropertyActions.entrySet()) {
